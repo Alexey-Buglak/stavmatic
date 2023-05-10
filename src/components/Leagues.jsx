@@ -32,7 +32,7 @@ const Leagues = () => {
   ]
 
   return (
-    <div className="border dark:text-dMWhite text-darkBlue text-xs border-darkWhite dark:border-[#2F3340] py-2 px-4 rounded-[4px] w-max">
+    <div className="sm:hidden border dark:text-dMWhite text-darkBlue text-xs border-darkWhite dark:border-[#2F3340] py-2 px-4 rounded-[4px] w-max">
       <div>
         <h1 className="uppercase dark:text-dMLightBlue text-blue font-semibold text-sm">
           Популярные Лиги

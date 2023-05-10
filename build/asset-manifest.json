@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.b8aa4ae0.css",
-    "main.js": "./static/js/main.674ab1c7.js",
+    "main.css": "./static/css/main.041aba01.css",
+    "main.js": "./static/js/main.00fa7ea6.js",
     "static/media/logoWhite.svg": "./static/media/logoWhite.c65b4a23771eda4d1f809575f4b9dad8.svg",
     "static/media/interIcon.svg": "./static/media/interIcon.f25a02862bb389e8e59525e2c4c71c5b.svg",
     "static/media/tennis.svg": "./static/media/tennis.9be466758550f8f5703667c633281e15.svg",
@@ -25,11 +25,11 @@
     "static/media/deFlag.svg": "./static/media/deFlag.c86b20abc043835ac53b0d930419fd4b.svg",
     "static/media/EredLig.svg": "./static/media/EredLig.f503e6dfa21f2ad6f99d0386c8a59c7a.svg",
     "static/media/LaLiga.svg": "./static/media/LaLiga.eb0cf46be783e27ef9488f88faaafe80.svg",
-    "main.b8aa4ae0.css.map": "./static/css/main.b8aa4ae0.css.map",
-    "main.674ab1c7.js.map": "./static/js/main.674ab1c7.js.map"
+    "main.041aba01.css.map": "./static/css/main.041aba01.css.map",
+    "main.00fa7ea6.js.map": "./static/js/main.00fa7ea6.js.map"
   },
   "entrypoints": [
-    "static/css/main.b8aa4ae0.css",
-    "static/js/main.674ab1c7.js"
+    "static/css/main.041aba01.css",
+    "static/js/main.00fa7ea6.js"
   ]
 }

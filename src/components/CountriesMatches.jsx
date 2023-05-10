@@ -199,7 +199,7 @@ const CountriesMatches = () => {
             cy="8.14809"
             r="0.5"
             stroke="#929EAA"
-            stroke-width="0.851851"
+            strokeWidth="0.851851"
           />
           <circle
             cx="10.0001"

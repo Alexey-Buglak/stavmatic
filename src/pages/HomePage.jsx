@@ -24,11 +24,11 @@ export default function HomePage() {
         <CountriesMatches />
         <NewsPanel />
       </div>
-      <div className='mx-auto max-w-[60%] my-12'>
-        <h1 className="text-darkBlue max-w-[300px] sm:text-base font-bold text-2xl">
+      <div className='mx-auto sm:max-w-full max-w-[60%] my-12'>
+        <h1 className="text-darkBlue dark:text-dMWhite max-w-[300px] sm:text-base font-bold text-2xl">
           Букмекерская компания Stavmatic
         </h1>
-        <p className="mt-4 text-gray text-xs">
+        <p className="mt-4 dark:text-dMGray sm:mt-2 text-gray text-xs">
           Проект Betonmobile нацелен только на качественное и долгосрочное
           сотрудничество с пользователями. Никто не может дать прогноз с
           гарантией, но если грамотно следовать рекомендациям специалиста, то по
