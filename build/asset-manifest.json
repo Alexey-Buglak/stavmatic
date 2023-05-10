@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "./static/css/main.b8aa4ae0.css",
+    "main.js": "./static/js/main.674ab1c7.js",
+    "static/media/logoWhite.svg": "./static/media/logoWhite.c65b4a23771eda4d1f809575f4b9dad8.svg",
+    "static/media/interIcon.svg": "./static/media/interIcon.f25a02862bb389e8e59525e2c4c71c5b.svg",
+    "static/media/tennis.svg": "./static/media/tennis.9be466758550f8f5703667c633281e15.svg",
+    "static/media/cybersport.svg": "./static/media/cybersport.973ace3b1069b815a50d94725490faa0.svg",
+    "static/media/IXbET.svg": "./static/media/IXbET.864a2b980d884bd5029f0ae89062b66e.svg",
+    "static/media/hokey.svg": "./static/media/hokey.422d4612fcc74bfe50ed56acf6277d65.svg",
+    "static/media/PlanetLig.svg": "./static/media/PlanetLig.71eba7475921d32762fe6d45259cb561.svg",
+    "static/media/handball.svg": "./static/media/handball.63d1170169145e54f8177cccfd118365.svg",
+    "static/media/voleyball.svg": "./static/media/voleyball.b19ee58f023180d6b81b9ff5e0361982.svg",
+    "static/media/basketball.svg": "./static/media/basketball.82a64264ff06028c2cae889268f9e26c.svg",
+    "static/media/football.svg": "./static/media/football.d2309fdd0f7d26b79cc8214452ebdad0.svg",
+    "static/media/vkLogo.svg": "./static/media/vkLogo.3a8695f1ac23c721a368a8633485bd87.svg",
+    "index.html": "./index.html",
+    "static/media/telegramLOgo.svg": "./static/media/telegramLOgo.0a604165a2f3e6272ff5af408a9a2113.svg",
+    "static/media/facebookLogo.svg": "./static/media/facebookLogo.9e12d99515e73c317320794ac678b3af.svg",
+    "static/media/italineIcon.svg": "./static/media/italineIcon.4acba5ed239caec9c9bcba0d230ee335.svg",
+    "static/media/starBlue.svg": "./static/media/starBlue.782e33db2d596d67af88e092ca5b1b3e.svg",
+    "static/media/Lig1.svg": "./static/media/Lig1.a643f2b40d194c66ea3fbe066fbc34f1.svg",
+    "static/media/starBlueEmpty.svg": "./static/media/starBlueEmpty.27965571857de299ade707a5a97dbe5f.svg",
+    "static/media/premLig.svg": "./static/media/premLig.aa983448281fd7f5d656f94f632b7ef4.svg",
+    "static/media/deFlag.svg": "./static/media/deFlag.c86b20abc043835ac53b0d930419fd4b.svg",
+    "static/media/EredLig.svg": "./static/media/EredLig.f503e6dfa21f2ad6f99d0386c8a59c7a.svg",
+    "static/media/LaLiga.svg": "./static/media/LaLiga.eb0cf46be783e27ef9488f88faaafe80.svg",
+    "main.b8aa4ae0.css.map": "./static/css/main.b8aa4ae0.css.map",
+    "main.674ab1c7.js.map": "./static/js/main.674ab1c7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b8aa4ae0.css",
+    "static/js/main.674ab1c7.js"
+  ]
+}

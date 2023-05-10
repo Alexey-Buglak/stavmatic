@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+  input::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    z-index: 100;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-[1500px];
+  }
+}
