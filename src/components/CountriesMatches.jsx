@@ -248,84 +248,87 @@ const CountriesMatches = () => {
         </svg>
       </label>
       <ul className="text-darkBlue dark:text-dMWhite ">
-        {filteredCountries.map((e, idx) => (
-          <li key={e.country + idx} className=" mt-3">
-            <div
-              className="cursor-pointer rounded-[4px] bg-blueLight  dark:bg-dMBlue flex items-center gap-x-2 py-2 px-3"
-              onClick={() => {
-                e.isOpen = !e.isOpen
-                setArr([...arr])
-              }}
-            >
-              <div onClick={(e) => e.stopPropagation()}>
-                <img
-                  src={e.fav ? starBlue : emptyStar}
-                  className="z-auto"
-                  onClick={() => {
-                    e.fav = !e.fav
-                    setArr([...arr])
-                  }}
-                  alt="fav"
-                />
-              </div>
-              <img src={e.icon} alt="flag" />
-              <p className="font-bold text-sm uppercase">
-                {e.country}: {e.league}
-              </p>
-              <svg
-                className={`${
-                  e.isOpen ? 'rotate-180' : 'rotate-0'
-                } duration-200 ml-auto`}
-                width="10"
-                height="7"
-                viewBox="0 0 10 7"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+        {filteredCountries.length > 0 ? (
+          filteredCountries.map((e, idx) => (
+            <li key={e.country + idx} className=" mt-3">
+              <div
+                className="cursor-pointer rounded-[4px] bg-blueLight  dark:bg-dMBlue flex items-center gap-x-2 py-2 px-3"
+                onClick={() => {
+                  e.isOpen = !e.isOpen
+                  setArr([...arr])
+                }}
               >
-                <path
-                  d="M9 6L5 2L1 6"
-                  className="stroke-[#627080] dark:stroke-[#E9E9F3]"
-                  strokeWidth="1.5"
-                />
-              </svg>
-            </div>
-            <ul className={`${e.isOpen ? 'block' : 'hidden'}`}>
-              {e.matches.map((m, idx) => (
-                <li
-                  key={m.teamOne.name + m.teamTwo.name + idx}
-                  className={`${
-                    e.matches.length === idx + 1 ? 'border-0' : 'border-b'
-                  } dark:border-[#2F3340] border-[#E4E7EC] flex items-center mx-2 py-2`}
-                >
+                <div onClick={(e) => e.stopPropagation()}>
                   <img
-                    src={m.fav ? starBlue : emptyStar}
-                    className=" cursor-pointer z-50"
+                    src={e.fav ? starBlue : emptyStar}
+                    className="z-auto"
                     onClick={() => {
-                      m.fav = !m.fav
+                      e.fav = !e.fav
                       setArr([...arr])
                     }}
                     alt="fav"
                   />
-                  <p className="ml-5 mr-10">{m.time}</p>
-                  <ul className="w-full mr-[5%] pr-5 border-r dark:border-[#2F3340] border-[#E4E7EC]">
-                    <li className="flex items-center">
-                      <img src={m.teamOne.icon} />
-                      <p className="ml-2 md:ml-1">{m.teamOne.name}</p>
-                      <p className="ml-auto">{m.teamOne.goals}</p>
-                    </li>
-                    <li className="flex items-center mt-2">
-                      <img src={m.teamTwo.icon} />
-                      <p className="ml-2 md:ml-1">{m.teamTwo.name}</p>
-                      <p className="ml-auto">{m.teamTwo.goals}</p>
-                    </li>
-                  </ul>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
+                </div>
+                <img src={e.icon} alt="flag" />
+                <p className="font-bold text-sm uppercase">
+                  {e.country}: {e.league}
+                </p>
+                <svg
+                  className={`${
+                    e.isOpen ? 'rotate-180' : 'rotate-0'
+                  } duration-200 ml-auto`}
+                  width="10"
+                  height="7"
+                  viewBox="0 0 10 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 6L5 2L1 6"
+                    className="stroke-[#627080] dark:stroke-[#E9E9F3]"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+              </div>
+              <ul className={`${e.isOpen ? 'block' : 'hidden'}`}>
+                {e.matches.map((m, idx) => (
+                  <li
+                    key={m.teamOne.name + m.teamTwo.name + idx}
+                    className={`${
+                      e.matches.length === idx + 1 ? 'border-0' : 'border-b'
+                    } dark:border-[#2F3340] border-[#E4E7EC] flex items-center mx-2 py-2`}
+                  >
+                    <img
+                      src={m.fav ? starBlue : emptyStar}
+                      className=" cursor-pointer z-50"
+                      onClick={() => {
+                        m.fav = !m.fav
+                        setArr([...arr])
+                      }}
+                      alt="fav"
+                    />
+                    <p className="ml-5 mr-10">{m.time}</p>
+                    <ul className="w-full mr-[5%] pr-5 border-r dark:border-[#2F3340] border-[#E4E7EC]">
+                      <li className="flex items-center">
+                        <img src={m.teamOne.icon} />
+                        <p className="ml-2 md:ml-1">{m.teamOne.name}</p>
+                        <p className="ml-auto">{m.teamOne.goals}</p>
+                      </li>
+                      <li className="flex items-center mt-2">
+                        <img src={m.teamTwo.icon} />
+                        <p className="ml-2 md:ml-1">{m.teamTwo.name}</p>
+                        <p className="ml-auto">{m.teamTwo.goals}</p>
+                      </li>
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))
+        ) : (
+          <p className='text-3xl uppercase mt-3 text-center text-bold text-darkBlue dark:text-dMWhite'>Ничего не найдено</p>
+        )}
       </ul>
-      
     </div>
   )
 }
