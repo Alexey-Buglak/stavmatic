@@ -469,17 +469,23 @@ const CountriesMatches = () => {
 
   return (
     <div className="w-full">
-      <div className="flex flex-wrap sm:hidden md:gap-y-2 gap-x-2 items-center">
-        <BlueButton text={'Все'} small={true} click={() => setDate(null)} />
-        <BlueButton text={'LIVE'} small={true} click={() => setDate('live')} />
-        <BlueButton text={'Прематч'} small={true} />
-        <BlueButton
-          text={'зАВЕРШЕННЫЕ'}
-          small={true}
-          click={() => setDate('end')}
-        />
-        <BlueButton text={'Кэфы'} small={true} />
-        <label className="ml-auto md:ml-0 relative">
+      <div className="flex flex-wrap justify-between  gap-y-2 gap-x-1 items-center">
+        <div className="overflow-auto flex space-x-2 ">
+          <BlueButton text={'все'} small={true} click={() => setDate(null)} />
+          <BlueButton
+            text={'LIVE'}
+            small={true}
+            click={() => setDate('live')}
+          />
+          <BlueButton text={'Прематч'} small={true} />
+          <BlueButton
+            text={'зАВЕРШЕННЫЕ'}
+            small={true}
+            click={() => setDate('end')}
+          />
+          <BlueButton text={'Кэфы'} small={true} />
+        </div>
+        <label className=" relative">
           <input
             type="date"
             onChange={handleChange}
@@ -576,94 +582,98 @@ const CountriesMatches = () => {
       </div>
       <ul className="text-darkBlue dark:text-dMWhite ">
         {filteredCountries.length > 0 ? (
-          filteredCountries.map((e, idx) => (
-            <li
-              key={e.country + idx}
-              className={`${e.matches.length ? 'block' : 'hidden'} mt-3`}
-            >
-              <div
-                className="cursor-pointer rounded-[4px] bg-blueLight  dark:bg-dMBlue flex items-center gap-x-2 py-2 px-3"
-                onClick={() => {
-                  e.isOpen = !e.isOpen
-                  setFilteredCountries([...filteredCountries])
-                }}
+          filteredCountries.map((e, idx) =>
+            e.matches.length ? (
+              <li
+                key={e.country + idx}
+                className={`${e.matches.length ? 'block' : 'hidden'} mt-3`}
               >
-                <div onClick={(e) => e.stopPropagation()}>
-                  <img
-                    src={e.fav ? starBlue : emptyStar}
-                    className="z-auto"
-                    onClick={() => {
-                      e.fav = !e.fav
-                      setFilteredCountries([...filteredCountries])
-                    }}
-                    alt="fav"
-                  />
-                </div>
-                <img src={e.icon} alt="flag" />
-                <p className="font-bold text-sm uppercase">
-                  {e.country}: {e.league}
-                </p>
-                <svg
-                  className={`${
-                    e.isOpen ? 'rotate-0' : 'rotate-180'
-                  } duration-200 ml-auto`}
-                  width="10"
-                  height="7"
-                  viewBox="0 0 10 7"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <div
+                  className="cursor-pointer rounded-[4px] bg-blueLight  dark:bg-dMBlue flex items-center gap-x-2 py-2 px-3"
+                  onClick={() => {
+                    e.isOpen = !e.isOpen
+                    setFilteredCountries([...filteredCountries])
+                  }}
                 >
-                  <path
-                    d="M9 6L5 2L1 6"
-                    className="stroke-[#627080] dark:stroke-[#E9E9F3]"
-                    strokeWidth="1.5"
-                  />
-                </svg>
-              </div>
-              <ul className={`${e.isOpen ? 'block' : 'hidden'}`}>
-                {e.matches.map((m, idx) => (
-                  <li
-                    key={m.teamOne.name + m.teamTwo.name + idx}
-                    className={`${
-                      e.matches.length === idx + 1 ? 'border-0' : 'border-b'
-                    } dark:border-[#2F3340] border-[#E4E7EC] flex items-center mx-2 py-2`}
-                  >
+                  <div onClick={(e) => e.stopPropagation()}>
                     <img
-                      src={m.fav ? starBlue : emptyStar}
-                      className=" cursor-pointer z-50"
+                      src={e.fav ? starBlue : emptyStar}
+                      className="z-auto"
                       onClick={() => {
-                        m.fav = !m.fav
+                        e.fav = !e.fav
                         setFilteredCountries([...filteredCountries])
                       }}
                       alt="fav"
                     />
-                    <p className="ml-5 mr-10 sm:ml-1 sm:mr-4">{m.time}</p>
-                    <ul
-                      className={`w-full ${
-                        m.date === 'live' ? 'mr-[2%]' : 'mr-[7.5%]'
-                      } pr-5 border-r dark:border-[#2F3340] border-[#E4E7EC]`}
+                  </div>
+                  <img src={e.icon} alt="flag" />
+                  <p className="font-bold text-sm uppercase">
+                    {e.country}: {e.league}
+                  </p>
+                  <svg
+                    className={`${
+                      e.isOpen ? 'rotate-0' : 'rotate-180'
+                    } duration-200 ml-auto`}
+                    width="10"
+                    height="7"
+                    viewBox="0 0 10 7"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9 6L5 2L1 6"
+                      className="stroke-[#627080] dark:stroke-[#E9E9F3]"
+                      strokeWidth="1.5"
+                    />
+                  </svg>
+                </div>
+                <ul className={`${e.isOpen ? 'block' : 'hidden'}`}>
+                  {e.matches.map((m, idx) => (
+                    <li
+                      key={m.teamOne.name + m.teamTwo.name + idx}
+                      className={`${
+                        e.matches.length === idx + 1 ? 'border-0' : 'border-b'
+                      } dark:border-[#2F3340] border-[#E4E7EC] flex items-center mx-2 py-2`}
                     >
-                      <li className="flex items-center">
-                        <img src={m.teamOne.icon} />
-                        <p className="ml-2 md:ml-1">{m.teamOne.name}</p>
-                        <p className="ml-auto">{m.teamOne.goals}</p>
-                      </li>
-                      <li className="flex items-center mt-2">
-                        <img src={m.teamTwo.icon} />
-                        <p className="ml-2 md:ml-1">{m.teamTwo.name}</p>
-                        <p className="ml-auto">{m.teamTwo.goals}</p>
-                      </li>
-                    </ul>
-                    {m.date === 'live' ? (
-                      <div className="mr-[2%]">LIVE</div>
-                    ) : (
-                      ''
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))
+                      <img
+                        src={m.fav ? starBlue : emptyStar}
+                        className=" cursor-pointer z-50"
+                        onClick={() => {
+                          m.fav = !m.fav
+                          setFilteredCountries([...filteredCountries])
+                        }}
+                        alt="fav"
+                      />
+                      <p className="ml-5 mr-10 sm:ml-1 sm:mr-4">{m.time}</p>
+                      <ul
+                        className={`w-full ${
+                          m.date === 'live' ? 'mr-[2%]' : 'mr-[7.5%]'
+                        } pr-5 border-r dark:border-[#2F3340] border-[#E4E7EC]`}
+                      >
+                        <li className="flex items-center">
+                          <img src={m.teamOne.icon} alt='icon' />
+                          <p className="ml-2 md:ml-1">{m.teamOne.name}</p>
+                          <p className="ml-auto">{m.teamOne.goals}</p>
+                        </li>
+                        <li className="flex items-center mt-2">
+                          <img src={m.teamTwo.icon} alt='icon' />
+                          <p className="ml-2 md:ml-1">{m.teamTwo.name}</p>
+                          <p className="ml-auto">{m.teamTwo.goals}</p>
+                        </li>
+                      </ul>
+                      {m.date === 'live' ? (
+                        <div className="mr-[2%]">LIVE</div>
+                      ) : (
+                        ''
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ) : (
+              ''
+            ),
+          )
         ) : (
           <p className="text-3xl uppercase mt-3 text-center text-bold text-darkBlue dark:text-dMWhite">
             Ничего не найдено
@@ -699,7 +709,7 @@ const CountriesMatches = () => {
                   key={team.name}
                   className="text-sm px-3 mt-2 dark:text-dMWhite text-darkBlue flex items-center  gap-x-2"
                 >
-                  <img src={team.icon} />
+                  <img src={team.icon} alt='icon' />
                   <p>{team.name}</p>
                   <p className="ml-auto">{team.rate}</p>
                 </li>

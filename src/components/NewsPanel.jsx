@@ -4,6 +4,20 @@ import { NavLink } from 'react-router-dom'
 import ixBet from '../imgs/IXbET.svg'
 import bonus from '../imgs/bonus.png'
 const NewsPanel = () => {
+  const newsTypes = [
+    {
+      name: 'Все',
+      type: null,
+    },
+    {
+      name: 'букмекеров',
+      type: 'buk',
+    },
+    {
+      name: 'спорта',
+      type: 'sport',
+    },
+  ]
   const ratC = [
     {
       icon: ixBet,
@@ -41,7 +55,7 @@ const NewsPanel = () => {
   ]
 
   const [filteredNews, setFilteredNews] = useState([])
-  const [typeNews, setTypeNews] = useState('')
+  const [typeNews, setTypeNews] = useState(null)
 
   useEffect(() => {
     if (typeNews) {
@@ -60,7 +74,7 @@ const NewsPanel = () => {
         <ul className="w-full rounded-[4px] border dark:border-[#2F3340] border-[#E4E7EC] p-3">
           {ratC.map((e, idx) => (
             <li className="flex items-center py-1" key={e.name + idx}>
-              <img src={e.icon} className="" />
+              <img src={e.icon} alt='img' />
               <p className="text-gray dark:text-dMGray ml-2">{e.name}</p>
               <button className="ml-auto dark:bg-[#455AA8] p-4 rounded-[4px] bg-blueLight">
                 <svg
@@ -92,7 +106,7 @@ const NewsPanel = () => {
           {bonuses.map((b, idx) => (
             <li key={idx}>
               <a href={b.href}>
-                <img src={b.img} className="mb-3" />
+                <img src={b.img} className="mb-3" alt='img' />
               </a>
             </li>
           ))}
@@ -102,25 +116,20 @@ const NewsPanel = () => {
         <h1 className="mt-5 dark:text-dMLightBlue dark:text-dMWhite font-bold text-sm mb-3 tracking-wider text-darkBlue uppercase">
           Новости
         </h1>
-        <div className="mb-2 dark:text-dMWhite text-darkBlue">
-          <button
-            className="rounded-[4px] dark:bg-[#455AA8] text-blue dark:text-dMWhite py-2 px-3 bg-blueLight uppercase text-sm font-semibold"
-            onClick={() => setTypeNews(null)}
-          >
-            Все
-          </button>
-          <button
-            className="uppercase px-3 py-2 text-sm font-semibold"
-            onClick={() => setTypeNews('buk')}
-          >
-            букмекеров
-          </button>
-          <button
-            className="uppercase px-3 py-2 text-sm font-semibold "
-            onClick={() => setTypeNews('sport')}
-          >
-            спорта
-          </button>
+        <div className="mb-2 ">
+          {newsTypes.map((n) => (
+            <button
+              key={n.type}
+              className={`${
+                n.type === typeNews
+                  ? 'dark:bg-[#455AA8] text-blue dark:text-dMWhite bg-blueLight'
+                  : 'dark:text-dMWhite text-darkBlue'
+              } rounded-[4px]  py-2 px-3  uppercase text-sm font-semibold`}
+              onClick={() => setTypeNews(n.type)}
+            >
+              {n.name}
+            </button>
+          ))}
         </div>
         <ul className="drop-shadow w-full rounded-[4px] border dark:border-[#2F3340] border-[#E4E7EC] ">
           {filteredNews.map((n, idx) => (
@@ -136,7 +145,7 @@ const NewsPanel = () => {
               <p className="text-gray dark:text-dMGray text-xs">{n.date}</p>
             </li>
           ))}
-          <div className='text-center'>
+          <div className="text-center">
             <button className="rounded-md w-[90%] mb-[18px]  py-[10px]  mt-4 px-6  text-blue uppercase border dark:border-[#5F657B] border-blueLight font-bold text-sm sm:text-sx md:px-3 md:py-[5px]">
               <NavLink to="/news">Все новости</NavLink>
             </button>
