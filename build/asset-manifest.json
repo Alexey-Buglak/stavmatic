@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/stavmatic/static/css/main.70af4c2b.css",
-    "main.js": "/stavmatic/static/js/main.00f1cc4e.js",
+    "main.css": "/stavmatic/static/css/main.29185eeb.css",
+    "main.js": "/stavmatic/static/js/main.bd0c8215.js",
     "static/media/logoWhite.svg": "/stavmatic/static/media/logoWhite.0f65610e379692ec85358ef864fadcad.svg",
     "static/media/interIcon.svg": "/stavmatic/static/media/interIcon.d1d852cfa71dc1f074ed3d955922db71.svg",
     "static/media/tennis.svg": "/stavmatic/static/media/tennis.d9cb4b2816d55f68d93dc89977c71e01.svg",
@@ -25,11 +25,13 @@
     "static/media/deFlag.svg": "/stavmatic/static/media/deFlag.650031831de9a03c387b19534eec9f22.svg",
     "static/media/EredLig.svg": "/stavmatic/static/media/EredLig.1ad34e95953f1b1126bfb965258edbe8.svg",
     "static/media/LaLiga.svg": "/stavmatic/static/media/LaLiga.c03f85038d1944dfe363e613ea88a074.svg",
-    "main.70af4c2b.css.map": "/stavmatic/static/css/main.70af4c2b.css.map",
-    "main.00f1cc4e.js.map": "/stavmatic/static/js/main.00f1cc4e.js.map"
+    "static/media/coefUp.svg": "/stavmatic/static/media/coefUp.0a38e10b60694e48f4e5bc074e130653.svg",
+    "static/media/coefTop.svg": "/stavmatic/static/media/coefTop.b4bf373228de26fcaf60cb8f16735537.svg",
+    "main.29185eeb.css.map": "/stavmatic/static/css/main.29185eeb.css.map",
+    "main.bd0c8215.js.map": "/stavmatic/static/js/main.bd0c8215.js.map"
   },
   "entrypoints": [
-    "static/css/main.70af4c2b.css",
-    "static/js/main.00f1cc4e.js"
+    "static/css/main.29185eeb.css",
+    "static/js/main.bd0c8215.js"
   ]
 }
