@@ -1,15 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
-import italien from '../imgs/italineIcon.svg'
-import interIcon from '../imgs/interIcon.svg'
-import BlueButton from './BlueButton'
+import italien from '../../imgs/italineIcon.svg'
+import interIcon from '../../imgs/interIcon.svg'
+import BlueButton from '../BlueButton'
 
-import starBlue from '../imgs/starBlue.svg'
-import emptyStar from '../imgs/starBlueEmpty.svg'
+import Top from '../../imgs/coefTop.svg'
+import Up from '../../imgs/coefUp.svg'
+
+import starBlue from '../../imgs/starBlue.svg'
+import emptyStar from '../../imgs/starBlueEmpty.svg'
 
 const CountriesMatches = () => {
   const arr = [
     {
-      country: 'Италия',
+      country: 'Италия Cefs',
       isOpen: false,
       icon: italien,
       league: 'Серия а',
@@ -24,11 +27,39 @@ const CountriesMatches = () => {
             name: 'Интер',
             goals: 0,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
           teamTwo: {
             name: 'Динамо',
             goals: 7,
             icon: interIcon,
+            coef: [
+              {
+                num: '4',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
         },
         {
@@ -40,11 +71,39 @@ const CountriesMatches = () => {
             name: 'Интер',
             goals: 0,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
           teamTwo: {
             name: 'Динамо',
             goals: 7,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
         },
         {
@@ -65,7 +124,7 @@ const CountriesMatches = () => {
       ],
     },
     {
-      country: 'Германия',
+      country: 'Германия 45',
       isOpen: false,
       icon: italien,
       league: 'Серия G',
@@ -119,7 +178,7 @@ const CountriesMatches = () => {
       ],
     },
     {
-      country: 'Германия',
+      country: 'HNT',
       isOpen: false,
       icon: italien,
       league: 'Серия G',
@@ -134,11 +193,39 @@ const CountriesMatches = () => {
             name: 'Интер',
             goals: 0,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
           teamTwo: {
             name: 'Динамо',
             goals: 7,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
         },
         {
@@ -149,11 +236,39 @@ const CountriesMatches = () => {
             name: 'Интер',
             goals: 0,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
           teamTwo: {
             name: 'Динамо',
             goals: 7,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
         },
         {
@@ -174,7 +289,7 @@ const CountriesMatches = () => {
       ],
     },
     {
-      country: 'Германия',
+      country: 'Германия 12',
       isOpen: false,
       icon: italien,
       league: 'Серия G',
@@ -188,11 +303,39 @@ const CountriesMatches = () => {
             name: 'Интер',
             goals: 0,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
           teamTwo: {
             name: 'Динамо',
             goals: 7,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
         },
         {
@@ -242,11 +385,39 @@ const CountriesMatches = () => {
             name: 'Интер',
             goals: 0,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
           teamTwo: {
             name: 'Динамо',
             goals: 7,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
         },
         {
@@ -272,11 +443,39 @@ const CountriesMatches = () => {
             name: 'Hamburg Towers',
             goals: 51,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
           teamTwo: {
             name: 'HNT',
             goals: 52,
             icon: interIcon,
+            coef: [
+              {
+                num: '3.95',
+                type: 'top',
+              },
+              {
+                num: '2.95',
+                type: 'up',
+              },
+              {
+                num: '1.95',
+                type: 'up',
+              },
+            ],
           },
         },
       ],
@@ -292,6 +491,20 @@ const CountriesMatches = () => {
           date: '2023-05-10',
           time: '16:00',
           fav: true,
+          coef: [
+            {
+              num: '3.95',
+              type: 'top',
+            },
+            {
+              num: '2.95',
+              type: 'up',
+            },
+            {
+              num: '1.95',
+              type: 'up',
+            },
+          ],
           teamOne: {
             name: 'Интер',
             goals: 0,
@@ -307,6 +520,20 @@ const CountriesMatches = () => {
           date: '2023-05-12',
           time: '16:00',
           fav: true,
+          coef: [
+            {
+              num: '3.95',
+              type: 'top',
+            },
+            {
+              num: '2.95',
+              type: 'up',
+            },
+            {
+              num: '1.95',
+              type: 'up',
+            },
+          ],
           teamOne: {
             name: 'Интер',
             goals: 0,
@@ -448,6 +675,7 @@ const CountriesMatches = () => {
     },
   ]
 
+  const [isKef, setIsKef] = useState(false)
   const [date, setDate] = useState('')
   const dateInputRef = useRef(null)
   const handleChange = (e) => {
@@ -483,14 +711,19 @@ const CountriesMatches = () => {
             small={true}
             click={() => setDate('end')}
           />
-          <BlueButton text={'Кэфы'} small={true} />
+          <BlueButton
+            text={'Кэфы'}
+            small={true}
+            class='sm:hidden'
+            click={() => setIsKef(!isKef)}
+          />
         </div>
-        <label className=" relative">
+        <label className="sm:w-full relative">
           <input
             type="date"
             onChange={handleChange}
             ref={dateInputRef}
-            className="rounded-[4px] z-50 border border-gray px-3 py-[2px] dark:bg-dMBlackBlueBg dark:text-dMWhite"
+            className="rounded-[4px] sm:w-full z-50 border border-gray px-3 py-[2px] dark:bg-dMBlackBlueBg dark:text-dMWhite"
           />
           <svg
             className="absolute right-2 top-1/2 translate-y-[-50%]"
@@ -610,10 +843,17 @@ const CountriesMatches = () => {
                   <p className="font-bold text-sm uppercase">
                     {e.country}: {e.league}
                   </p>
+                  {isKef ? (
+                    <div className="text-sm font-bold ml-auto  space-x-14 mr-[10px]">
+                      <span>1</span>
+                      <span>X</span>
+                      <span>2</span>
+                    </div>
+                  ) : null}
                   <svg
-                    className={`${
-                      e.isOpen ? 'rotate-0' : 'rotate-180'
-                    } duration-200 ml-auto`}
+                    className={`${e.isOpen ? 'rotate-0' : 'rotate-180'} ${
+                      isKef ? '' : 'ml-auto'
+                    } duration-200`}
                     width="10"
                     height="7"
                     viewBox="0 0 10 7"
@@ -647,32 +887,38 @@ const CountriesMatches = () => {
                       <p className="ml-5 mr-10 sm:ml-1 sm:mr-4">{m.time}</p>
                       <ul
                         className={`w-full ${
-                          m.date === 'live' ? 'mr-[2%]' : 'mr-[7.5%]'
-                        } pr-5 border-r dark:border-[#2F3340] border-[#E4E7EC]`}
+                          isKef || m.date === 'live' ? 'mr-[2%]' : 'mr-[7.5%]'
+                        } ${
+                          isKef ? 'border-0 ' : 'border-r pr-5'
+                        }  dark:border-[#2F3340] border-[#E4E7EC]`}
                       >
                         <li className="flex items-center">
-                          <img src={m.teamOne.icon} alt='icon' />
+                          <img src={m.teamOne.icon} alt="icon" />
                           <p className="ml-2 md:ml-1">{m.teamOne.name}</p>
-                          <p className="ml-auto">{m.teamOne.goals}</p>
+                          {isKef && m.teamOne.coef ? (
+                            <div className='sm:hidden flex ml-auto gap-x-4'>
+                              {m.teamOne.coef.map((c, idx) => (
+                                <p key={idx} className='flex gap-x-1 items-center'><img src={c.type === 'top' ? Top : Up} alt={c.type}/> {c.num}</p>
+                              ))}
+                            </div>
+                          ) : (
+                            <p className="ml-auto">{m.teamOne.goals}</p>
+                          )}
                         </li>
                         <li className="flex items-center mt-2">
-                          <img src={m.teamTwo.icon} alt='icon' />
+                          <img src={m.teamTwo.icon} alt="icon" />
                           <p className="ml-2 md:ml-1">{m.teamTwo.name}</p>
                           <p className="ml-auto">{m.teamTwo.goals}</p>
                         </li>
                       </ul>
                       {m.date === 'live' ? (
                         <div className="mr-[2%]">LIVE</div>
-                      ) : (
-                        ''
-                      )}
+                      ) : null}
                     </li>
                   ))}
                 </ul>
               </li>
-            ) : (
-              ''
-            ),
+            ) : null,
           )
         ) : (
           <p className="text-3xl uppercase mt-3 text-center text-bold text-darkBlue dark:text-dMWhite">
@@ -709,7 +955,7 @@ const CountriesMatches = () => {
                   key={team.name}
                   className="text-sm px-3 mt-2 dark:text-dMWhite text-darkBlue flex items-center  gap-x-2"
                 >
-                  <img src={team.icon} alt='icon' />
+                  <img src={team.icon} alt="icon" />
                   <p>{team.name}</p>
                   <p className="ml-auto">{team.rate}</p>
                 </li>

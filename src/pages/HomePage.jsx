@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import Leagues from '../components/Leagues'
-import CountriesMatches from '../components/CountriesMatches'
+import Leagues from '../components/mainPage/Leagues'
+import CountriesMatches from '../components/mainPage/CountriesMatches'
 import NewsPanel from '../components/NewsPanel'
 
 export default function HomePage() {
@@ -24,7 +24,6 @@ export default function HomePage() {
         <CountriesMatches />
         <NewsPanel />
       </div>
-      
     </div>
   )
 }

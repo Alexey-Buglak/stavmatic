@@ -1,5 +1,6 @@
 import HomePage from '../pages/HomePage'
 import InfoPage from '../pages/InfoPage'
+import MatchesCard from '../pages/MatchesCard'
 
 export const publicRoutes = [
   {
@@ -7,9 +8,13 @@ export const publicRoutes = [
     Component: HomePage,
   },
   {
-    path: '/info',
+    path: '/info/:type',
     Component: InfoPage,
   },
+  {
+    path: '/match/:match',
+    Component: MatchesCard
+  }
 ]
 
 export const privateRoutes = [] // soon

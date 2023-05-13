@@ -78,7 +78,9 @@ export default function Navbar() {
             Футбол - Результаты онлайн и счет матчей
           </p>
           <div className="font-[600] uppercase text-sm flex justify-between items-center gap-x-8">
-            <img src={logo} alt="stavmatic" />
+            <NavLink to='/'>
+              <img src={logo} alt="stavmatic" />
+            </NavLink>
             <div className="md:hidden items-center flex gap-x-6 ">
               {navbarItems.map((e) => (
                 <NavLink key={e.path} to={e.path}>

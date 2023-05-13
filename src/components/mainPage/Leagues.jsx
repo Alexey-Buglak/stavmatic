@@ -2,21 +2,21 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
-import premLig from '../imgs/premLig.svg'
-import LigOne from '../imgs/Lig1.svg'
-import BundesLiga from '../imgs/deFlag.svg'
-import Eredivisie from '../imgs/EredLig.svg'
-import LaLiga from '../imgs/LaLiga.svg'
-import PlanetLig from '../imgs/PlanetLig.svg'
-import starBlue from '../imgs/starBlue.svg'
-import emptyStar from '../imgs/starBlueEmpty.svg'
-import { loadTeams } from '../store/features/myTeams/myTeamsSlise'
+import premLig from '../../imgs/premLig.svg'
+import LigOne from '../../imgs/Lig1.svg'
+import BundesLiga from '../../imgs/deFlag.svg'
+import Eredivisie from '../../imgs/EredLig.svg'
+import LaLiga from '../../imgs/LaLiga.svg'
+import PlanetLig from '../../imgs/PlanetLig.svg'
+import starBlue from '../../imgs/starBlue.svg'
+import emptyStar from '../../imgs/starBlueEmpty.svg'
+import { loadTeams } from '../../store/features/myTeams/myTeamsSlise'
 
 const Leagues = () => {
   const dispatch = useDispatch()
   // dispatch(loadTeams())
 
-  const [ openCountry, setOpenCountry] = useState(null)
+  const [openCountry, setOpenCountry] = useState(null)
   const { countries } = useSelector((state) => state.countries)
   const { teams } = useSelector((state) => state.myTeams)
   const leagues = [

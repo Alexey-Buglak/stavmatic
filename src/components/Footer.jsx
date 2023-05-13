@@ -84,7 +84,7 @@ const Footer = () => {
                 <NavLink>Обучающие статьи</NavLink>
               </li>
               <li>
-                <NavLink>Политика конфиденциальности</NavLink>
+                <NavLink to='/info/confidentiality'>Политика конфиденциальности</NavLink>
               </li>
               <li>
                 <NavLink>Пользовательское соглашение</NavLink>
