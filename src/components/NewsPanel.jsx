@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import ixBet from '../imgs/IXbET.svg'
@@ -54,16 +54,18 @@ const NewsPanel = () => {
     },
   ]
 
-  const [filteredNews, setFilteredNews] = useState([])
+  const [filteredNews, setFilteredNews] = useState(news)
   const [typeNews, setTypeNews] = useState(null)
 
-  useEffect(() => {
-    if (typeNews) {
-      setFilteredNews(news.filter((n) => n.type === typeNews))
+  
+  const filterNews = (type) => {
+    setTypeNews(type )
+    if (type) {
+      setFilteredNews(news.filter((n) => n.type === type))
     } else {
       setFilteredNews(news)
     }
-  }, [typeNews])
+  }
 
   return (
     <div className="md:hidden max-w-[300px] ml-auto">
@@ -74,7 +76,7 @@ const NewsPanel = () => {
         <ul className="w-full rounded-[4px] border dark:border-[#2F3340] border-[#E4E7EC] p-3">
           {ratC.map((e, idx) => (
             <li className="flex items-center py-1" key={e.name + idx}>
-              <img src={e.icon} alt='img' />
+              <img src={e.icon} alt="img" />
               <p className="text-gray dark:text-dMGray ml-2">{e.name}</p>
               <button className="ml-auto dark:bg-[#455AA8] p-4 rounded-[4px] bg-blueLight">
                 <svg
@@ -106,7 +108,7 @@ const NewsPanel = () => {
           {bonuses.map((b, idx) => (
             <li key={idx}>
               <a href={b.href}>
-                <img src={b.img} className="mb-3" alt='img' />
+                <img src={b.img} className="mb-3" alt="img" />
               </a>
             </li>
           ))}
@@ -125,7 +127,7 @@ const NewsPanel = () => {
                   ? 'dark:bg-[#455AA8] text-blue dark:text-dMWhite bg-blueLight'
                   : 'dark:text-dMWhite text-darkBlue'
               } rounded-[4px]  py-2 px-3  uppercase text-sm font-semibold`}
-              onClick={() => setTypeNews(n.type)}
+              onClick={() => filterNews(n.type)}
             >
               {n.name}
             </button>

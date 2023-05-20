@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import italien from '../../imgs/italineIcon.svg'
 import interIcon from '../../imgs/interIcon.svg'
 import BlueButton from '../BlueButton'
@@ -676,45 +676,49 @@ const CountriesMatches = () => {
   ]
 
   const [isKef, setIsKef] = useState(false)
-  const [date, setDate] = useState('')
   const dateInputRef = useRef(null)
   const handleChange = (e) => {
-    setDate(e.target.value)
+    filterMatches(e.target.value)
   }
-  const [filteredCountries, setFilteredCountries] = useState([])
+  const [filteredCountries, setFilteredCountries] = useState(arr)
 
-  useEffect(() => {
+  const filterMatches = (date) => {
     if (date) {
       setFilteredCountries(
-        arr.filter(
-          (e) => (e.matches = e.matches.filter((m) => m.date === date)),
-        ),
+        arr.filter((e) => {
+          e.matches = e.matches.filter((m) => m.date === date)
+          return e.matches.length ? e : null
+        }),
       )
     } else {
       setFilteredCountries(arr)
     }
-  }, [date])
+  }
 
   return (
     <div className="w-full">
       <div className="flex flex-wrap justify-between  gap-y-2 gap-x-1 items-center">
         <div className="overflow-auto flex space-x-2 ">
-          <BlueButton text={'все'} small={true} click={() => setDate(null)} />
+          <BlueButton
+            text={'все'}
+            small={true}
+            click={() => filterMatches(null)}
+          />
           <BlueButton
             text={'LIVE'}
             small={true}
-            click={() => setDate('live')}
+            click={() => filterMatches('live')}
           />
           <BlueButton text={'Прематч'} small={true} />
           <BlueButton
             text={'зАВЕРШЕННЫЕ'}
             small={true}
-            click={() => setDate('end')}
+            click={() => filterMatches('end')}
           />
           <BlueButton
             text={'Кэфы'}
             small={true}
-            class='sm:hidden'
+            class="sm:hidden"
             click={() => setIsKef(!isKef)}
           />
         </div>
@@ -814,112 +818,119 @@ const CountriesMatches = () => {
         </label>
       </div>
       <ul className="text-darkBlue dark:text-dMWhite ">
-        {filteredCountries.length > 0 ? (
-          filteredCountries.map((e, idx) =>
-            e.matches.length ? (
-              <li
-                key={e.country + idx}
-                className={`${e.matches.length ? 'block' : 'hidden'} mt-3`}
+        {filteredCountries.length ? (
+          filteredCountries.map((e, idx) => (
+            <li
+              key={e.country + idx}
+              className={`${e.matches.length ? 'block' : 'hidden'} mt-3`}
+            >
+              <div
+                className="cursor-pointer rounded-[4px] bg-blueLight  dark:bg-dMBlue flex items-center gap-x-2 py-2 px-3"
+                onClick={() => {
+                  e.isOpen = !e.isOpen
+                  setFilteredCountries([...filteredCountries])
+                }}
               >
-                <div
-                  className="cursor-pointer rounded-[4px] bg-blueLight  dark:bg-dMBlue flex items-center gap-x-2 py-2 px-3"
-                  onClick={() => {
-                    e.isOpen = !e.isOpen
-                    setFilteredCountries([...filteredCountries])
-                  }}
+                <div onClick={(e) => e.stopPropagation()}>
+                  <img
+                    src={e.fav ? starBlue : emptyStar}
+                    className="z-auto"
+                    onClick={() => {
+                      e.fav = !e.fav
+                      setFilteredCountries([...filteredCountries])
+                    }}
+                    alt="fav"
+                  />
+                </div>
+                <img src={e.icon} alt="flag" />
+                <p className="font-bold text-sm uppercase">
+                  {e.country}: {e.league}
+                </p>
+                {isKef ? (
+                  <div className="text-sm font-bold ml-auto  space-x-14 mr-[10px]">
+                    <span>1</span>
+                    <span>X</span>
+                    <span>2</span>
+                  </div>
+                ) : null}
+                <svg
+                  className={`${e.isOpen ? 'rotate-0' : 'rotate-180'} ${
+                    isKef ? '' : 'ml-auto'
+                  } duration-200`}
+                  width="10"
+                  height="7"
+                  viewBox="0 0 10 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <div onClick={(e) => e.stopPropagation()}>
+                  <path
+                    d="M9 6L5 2L1 6"
+                    className="stroke-[#627080] dark:stroke-[#E9E9F3]"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+              </div>
+              <ul className={`${e.isOpen ? 'block' : 'hidden'}`}>
+                {e.matches.map((m, idx) => (
+                  <li
+                    key={m.teamOne.name + m.teamTwo.name + idx}
+                    className={`${
+                      e.matches.length === idx + 1 ? 'border-0' : 'border-b'
+                    } dark:border-[#2F3340] border-[#E4E7EC] flex items-center mx-2 py-2`}
+                  >
                     <img
-                      src={e.fav ? starBlue : emptyStar}
-                      className="z-auto"
+                      src={m.fav ? starBlue : emptyStar}
+                      className=" cursor-pointer z-50"
                       onClick={() => {
-                        e.fav = !e.fav
+                        m.fav = !m.fav
                         setFilteredCountries([...filteredCountries])
                       }}
                       alt="fav"
                     />
-                  </div>
-                  <img src={e.icon} alt="flag" />
-                  <p className="font-bold text-sm uppercase">
-                    {e.country}: {e.league}
-                  </p>
-                  {isKef ? (
-                    <div className="text-sm font-bold ml-auto  space-x-14 mr-[10px]">
-                      <span>1</span>
-                      <span>X</span>
-                      <span>2</span>
-                    </div>
-                  ) : null}
-                  <svg
-                    className={`${e.isOpen ? 'rotate-0' : 'rotate-180'} ${
-                      isKef ? '' : 'ml-auto'
-                    } duration-200`}
-                    width="10"
-                    height="7"
-                    viewBox="0 0 10 7"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9 6L5 2L1 6"
-                      className="stroke-[#627080] dark:stroke-[#E9E9F3]"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
-                </div>
-                <ul className={`${e.isOpen ? 'block' : 'hidden'}`}>
-                  {e.matches.map((m, idx) => (
-                    <li
-                      key={m.teamOne.name + m.teamTwo.name + idx}
-                      className={`${
-                        e.matches.length === idx + 1 ? 'border-0' : 'border-b'
-                      } dark:border-[#2F3340] border-[#E4E7EC] flex items-center mx-2 py-2`}
+                    <p className="ml-5 mr-10 sm:ml-1 sm:mr-4">{m.time}</p>
+                    <ul
+                      className={`w-full ${
+                        isKef || m.date === 'live' ? 'mr-[2%]' : 'mr-[7.5%]'
+                      } ${
+                        isKef ? 'border-0 ' : 'border-r pr-5'
+                      }  dark:border-[#2F3340] border-[#E4E7EC]`}
                     >
-                      <img
-                        src={m.fav ? starBlue : emptyStar}
-                        className=" cursor-pointer z-50"
-                        onClick={() => {
-                          m.fav = !m.fav
-                          setFilteredCountries([...filteredCountries])
-                        }}
-                        alt="fav"
-                      />
-                      <p className="ml-5 mr-10 sm:ml-1 sm:mr-4">{m.time}</p>
-                      <ul
-                        className={`w-full ${
-                          isKef || m.date === 'live' ? 'mr-[2%]' : 'mr-[7.5%]'
-                        } ${
-                          isKef ? 'border-0 ' : 'border-r pr-5'
-                        }  dark:border-[#2F3340] border-[#E4E7EC]`}
-                      >
-                        <li className="flex items-center">
-                          <img src={m.teamOne.icon} alt="icon" />
-                          <p className="ml-2 md:ml-1">{m.teamOne.name}</p>
-                          {isKef && m.teamOne.coef ? (
-                            <div className='sm:hidden flex ml-auto gap-x-4'>
-                              {m.teamOne.coef.map((c, idx) => (
-                                <p key={idx} className='flex gap-x-1 items-center'><img src={c.type === 'top' ? Top : Up} alt={c.type}/> {c.num}</p>
-                              ))}
-                            </div>
-                          ) : (
-                            <p className="ml-auto">{m.teamOne.goals}</p>
-                          )}
-                        </li>
-                        <li className="flex items-center mt-2">
-                          <img src={m.teamTwo.icon} alt="icon" />
-                          <p className="ml-2 md:ml-1">{m.teamTwo.name}</p>
-                          <p className="ml-auto">{m.teamTwo.goals}</p>
-                        </li>
-                      </ul>
-                      {m.date === 'live' ? (
-                        <div className="mr-[2%]">LIVE</div>
-                      ) : null}
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ) : null,
-          )
+                      <li className="flex items-center">
+                        <img src={m.teamOne.icon} alt="icon" />
+                        <p className="ml-2 md:ml-1">{m.teamOne.name}</p>
+                        {isKef && m.teamOne.coef ? (
+                          <div className="sm:hidden flex ml-auto gap-x-4">
+                            {m.teamOne.coef.map((c, idx) => (
+                              <p
+                                key={idx}
+                                className="flex gap-x-1 items-center"
+                              >
+                                <img
+                                  src={c.type === 'top' ? Top : Up}
+                                  alt={c.type}
+                                />{' '}
+                                {c.num}
+                              </p>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="ml-auto">{m.teamOne.goals}</p>
+                        )}
+                      </li>
+                      <li className="flex items-center mt-2">
+                        <img src={m.teamTwo.icon} alt="icon" />
+                        <p className="ml-2 md:ml-1">{m.teamTwo.name}</p>
+                        <p className="ml-auto">{m.teamTwo.goals}</p>
+                      </li>
+                    </ul>
+                    {m.date === 'live' ? (
+                      <div className="mr-[2%]">LIVE</div>
+                    ) : null}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))
         ) : (
           <p className="text-3xl uppercase mt-3 text-center text-bold text-darkBlue dark:text-dMWhite">
             Ничего не найдено
