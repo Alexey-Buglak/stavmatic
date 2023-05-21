@@ -76,8 +76,8 @@ const NewsPanel = () => {
         <ul className="w-full rounded-[4px] border dark:border-[#2F3340] border-[#E4E7EC] p-3">
           {ratC.map((e, idx) => (
             <li className="flex items-center py-1" key={e.name + idx}>
-              <img src={e.icon} alt="img" />
-              <p className="text-gray dark:text-dMGray ml-2">{e.name}</p>
+              <img src={e.icon} alt="img" className='w-[40%]' />
+              <p className="text-gray lg:text-xs dark:text-dMGray ml-2">{e.name}</p>
               <button className="ml-auto dark:bg-[#455AA8] p-4 rounded-[4px] bg-blueLight">
                 <svg
                   width="7"

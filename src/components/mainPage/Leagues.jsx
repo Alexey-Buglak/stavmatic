@@ -32,7 +32,7 @@ const Leagues = () => {
   ]
 
   return (
-    <div className="sm:hidden border dark:text-dMWhite text-darkBlue text-xs border-darkWhite dark:border-[#2F3340] py-2 px-4 rounded-[4px] w-max">
+    <div className="sm:hidden border h-max dark:text-dMWhite text-darkBlue text-xs border-darkWhite dark:border-[#2F3340] py-2 px-4 rounded-[4px] w-max">
       <div>
         <h1 className="uppercase dark:text-dMLightBlue text-blue font-semibold text-sm">
           Популярные Лиги
@@ -80,23 +80,27 @@ const Leagues = () => {
             >
               {e.open}
               <div
-                onClick={() => setOpenCountry(e.name)}
-                className="cursor-pointer"
+                onClick={() => {
+                  if (openCountry === e.name) {
+                    setOpenCountry(null)
+                  } else {
+                    setOpenCountry(e.name)
+                  }
+                }}
+                className="text-sm cursor-pointer"
               >
                 {e.name}
               </div>
-              <ul
-                className={`${
-                  openCountry === e.name ? 'block' : 'hidden'
-                } ml-4`}
-              >
-                {e.leagues.map((e) => (
-                  <li className="flex items-center gap-x-1" key={e.name}>
-                    {e.name}{' '}
-                    <img src={e.fav ? starBlue : emptyStar} alt="fav" />
-                  </li>
-                ))}
-              </ul>
+              {openCountry === e.name ? (
+                <ul className="ml-4">
+                  {e.leagues.map((e) => (
+                    <li className="flex items-center gap-x-1" key={e.name}>
+                      {e.name}{' '}
+                      <img src={e.fav ? starBlue : emptyStar} alt="fav" />
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </li>
           ))}
         </ul>

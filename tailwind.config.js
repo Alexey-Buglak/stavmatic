@@ -10,9 +10,9 @@ module.exports = {
       vsm: { max: '320px' },
 
       // REVERSE //
-      lgR: { min: '1024px' },
-      mdR: { min: '768px' },
-      smR: { min: '480px' },
+      lgR: { min: '1024.1px' },
+      mdR: { min: '768.1px' },
+      smR: { min: '480.1px' },
       xxlR: { min: '2000px' },
     },
     container: {

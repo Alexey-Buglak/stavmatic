@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import italien from '../../imgs/italineIcon.svg'
 import interIcon from '../../imgs/interIcon.svg'
 import BlueButton from '../BlueButton'
@@ -8,9 +8,10 @@ import Up from '../../imgs/coefUp.svg'
 
 import starBlue from '../../imgs/starBlue.svg'
 import emptyStar from '../../imgs/starBlueEmpty.svg'
+import { NavLink } from 'react-router-dom'
 
 const CountriesMatches = () => {
-  const arr = [
+  let arr = [
     {
       country: 'Италия Cefs',
       isOpen: false,
@@ -19,10 +20,11 @@ const CountriesMatches = () => {
       fav: false,
       matches: [
         {
+          path: '1',
           date: '2023-05-10',
           live: true,
           time: '16:00',
-          fav: true,
+          fav: false,
           teamOne: {
             name: 'Интер',
             goals: 0,
@@ -64,6 +66,7 @@ const CountriesMatches = () => {
         },
         {
           date: '2023-05-10',
+          path: '2',
           time: '16:00',
           live: true,
           fav: true,
@@ -108,6 +111,7 @@ const CountriesMatches = () => {
         },
         {
           time: '12:00',
+          path: '99',
           date: '2023-05-11',
           fav: true,
           teamOne: {
@@ -164,6 +168,7 @@ const CountriesMatches = () => {
           time: '12:00',
           date: '2023-05-11',
           fav: true,
+          path: 'hnt',
           teamOne: {
             name: 'Hamburg Towers',
             goals: 51,
@@ -297,6 +302,7 @@ const CountriesMatches = () => {
       matches: [
         {
           date: '2023-05-10',
+          path: 'HNT',
           time: '16:00',
           fav: true,
           teamOne: {
@@ -677,9 +683,6 @@ const CountriesMatches = () => {
 
   const [isKef, setIsKef] = useState(false)
   const dateInputRef = useRef(null)
-  const handleChange = (e) => {
-    filterMatches(e.target.value)
-  }
   const [filteredCountries, setFilteredCountries] = useState(arr)
 
   const filterMatches = (date) => {
@@ -725,7 +728,7 @@ const CountriesMatches = () => {
         <label className="sm:w-full relative">
           <input
             type="date"
-            onChange={handleChange}
+            onChange={(e) => filterMatches(e.target.value)}
             ref={dateInputRef}
             className="rounded-[4px] sm:w-full z-50 border border-gray px-3 py-[2px] dark:bg-dMBlackBlueBg dark:text-dMWhite"
           />
@@ -820,17 +823,14 @@ const CountriesMatches = () => {
       <ul className="text-darkBlue dark:text-dMWhite ">
         {filteredCountries.length ? (
           filteredCountries.map((e, idx) => (
-            <li
-              key={e.country + idx}
-              className={`${e.matches.length ? 'block' : 'hidden'} mt-3`}
-            >
+            <li key={e.country + idx} className="mt-3">
               <div
                 className="cursor-pointer rounded-[4px] bg-blueLight  dark:bg-dMBlue flex items-center gap-x-2 py-2 px-3"
                 onClick={() => {
                   e.isOpen = !e.isOpen
                   setFilteredCountries([...filteredCountries])
                 }}
-              >
+                >
                 <div onClick={(e) => e.stopPropagation()}>
                   <img
                     src={e.fav ? starBlue : emptyStar}
@@ -838,6 +838,18 @@ const CountriesMatches = () => {
                     onClick={() => {
                       e.fav = !e.fav
                       setFilteredCountries([...filteredCountries])
+                      
+                      // ******** //
+
+                      arr = arr.filter((el) => {
+                        if (el.country + el.league === e.country + e.league) {
+                          el.fav = !el.fav
+                        }
+                        return el
+                      })
+
+
+                      // ******** //
                     }}
                     alt="fav"
                   />
@@ -870,65 +882,68 @@ const CountriesMatches = () => {
                   />
                 </svg>
               </div>
-              <ul className={`${e.isOpen ? 'block' : 'hidden'}`}>
-                {e.matches.map((m, idx) => (
-                  <li
-                    key={m.teamOne.name + m.teamTwo.name + idx}
-                    className={`${
-                      e.matches.length === idx + 1 ? 'border-0' : 'border-b'
-                    } dark:border-[#2F3340] border-[#E4E7EC] flex items-center mx-2 py-2`}
-                  >
-                    <img
-                      src={m.fav ? starBlue : emptyStar}
-                      className=" cursor-pointer z-50"
-                      onClick={() => {
-                        m.fav = !m.fav
-                        setFilteredCountries([...filteredCountries])
-                      }}
-                      alt="fav"
-                    />
-                    <p className="ml-5 mr-10 sm:ml-1 sm:mr-4">{m.time}</p>
-                    <ul
-                      className={`w-full ${
-                        isKef || m.date === 'live' ? 'mr-[2%]' : 'mr-[7.5%]'
-                      } ${
-                        isKef ? 'border-0 ' : 'border-r pr-5'
-                      }  dark:border-[#2F3340] border-[#E4E7EC]`}
+              {e.isOpen ? (
+                <ul>
+                  {e.matches.map((m, idx) => (
+                    <NavLink
+                      to={`/matches/${m.path}`}
+                      key={m.teamOne.name + m.teamTwo.name + idx}
+                      className={`${
+                        e.matches.length === idx + 1 ? 'border-0' : 'border-b'
+                      } dark:border-[#2F3340] border-[#E4E7EC] flex items-center mx-2 py-2`}
                     >
-                      <li className="flex items-center">
-                        <img src={m.teamOne.icon} alt="icon" />
-                        <p className="ml-2 md:ml-1">{m.teamOne.name}</p>
-                        {isKef && m.teamOne.coef ? (
-                          <div className="sm:hidden flex ml-auto gap-x-4">
-                            {m.teamOne.coef.map((c, idx) => (
-                              <p
-                                key={idx}
-                                className="flex gap-x-1 items-center"
-                              >
-                                <img
-                                  src={c.type === 'top' ? Top : Up}
-                                  alt={c.type}
-                                />{' '}
-                                {c.num}
-                              </p>
-                            ))}
-                          </div>
-                        ) : (
-                          <p className="ml-auto">{m.teamOne.goals}</p>
-                        )}
-                      </li>
-                      <li className="flex items-center mt-2">
-                        <img src={m.teamTwo.icon} alt="icon" />
-                        <p className="ml-2 md:ml-1">{m.teamTwo.name}</p>
-                        <p className="ml-auto">{m.teamTwo.goals}</p>
-                      </li>
-                    </ul>
-                    {m.date === 'live' ? (
-                      <div className="mr-[2%]">LIVE</div>
-                    ) : null}
-                  </li>
-                ))}
-              </ul>
+                      <img
+                        src={m.fav ? starBlue : emptyStar}
+                        className=" cursor-pointer z-50"
+                        onClick={() => {
+                          m.fav = !m.fav
+                          setFilteredCountries([...filteredCountries])
+                        }}
+                        alt="fav"
+                      />
+                      <p className="ml-5 mr-10 sm:ml-1 sm:mr-4">{m.time}</p>
+                      <ul
+                        className={`w-full ${
+                          isKef || m.date === 'live' ? 'mr-[2%]' : 'mr-[7.5%]'
+                        } ${
+                          isKef ? 'border-0 ' : 'border-r pr-5'
+                        }  dark:border-[#2F3340] border-[#E4E7EC]`}
+                      >
+                        <li className="flex items-center">
+                          <img src={m.teamOne.icon} alt="icon" />
+                          <p className="ml-2 md:ml-1">{m.teamOne.name}</p>
+                          {isKef && m.teamOne.coef ? (
+                            <div className="sm:hidden flex ml-auto gap-x-4">
+                              {m.teamOne.coef.map((c, idx) => (
+                                <p
+                                  key={idx}
+                                  className="flex gap-x-1 items-center"
+                                >
+                                  <img
+                                    src={c.type === 'top' ? Top : Up}
+                                    alt={c.type}
+                                  />{' '}
+                                  {c.num}
+                                </p>
+                              ))}
+                            </div>
+                          ) : (
+                            <p className="ml-auto">{m.teamOne.goals}</p>
+                          )}
+                        </li>
+                        <li className="flex items-center mt-2">
+                          <img src={m.teamTwo.icon} alt="icon" />
+                          <p className="ml-2 md:ml-1">{m.teamTwo.name}</p>
+                          <p className="ml-auto">{m.teamTwo.goals}</p>
+                        </li>
+                      </ul>
+                      {m.date === 'live' ? (
+                        <div className="mr-[2%]">LIVE</div>
+                      ) : null}
+                    </NavLink>
+                  ))}
+                </ul>
+              ) : null}
             </li>
           ))
         ) : (
@@ -958,7 +973,7 @@ const CountriesMatches = () => {
         <div className="flex flex-wrap mt-4 gap-6">
           {top.map((t) => (
             <ul key={t.name} className="md:w-full w-[45%]">
-              <li className="text-black dark:text-dMWhite  dark:bg-dMBlue uppercase font-semibold text-sm py-2 px-20 bg-blueLight rounded-[4px] text-center">
+              <li className="text-black dark:text-dMWhite whitespace-nowrap  dark:bg-dMBlue uppercase font-semibold text-sm py-2  bg-blueLight rounded-[4px] text-center">
                 {t.name}
               </li>
               {t.teams.map((team) => (
