@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/stavmatic/static/css/main.29185eeb.css",
-    "main.js": "/stavmatic/static/js/main.bd0c8215.js",
+    "main.css": "/stavmatic/static/css/main.1e034bf6.css",
+    "main.js": "/stavmatic/static/js/main.447457ce.js",
+    "static/media/image 49.png": "/stavmatic/static/media/image 49.0d60dc02c7caea22992d.png",
     "static/media/logoWhite.svg": "/stavmatic/static/media/logoWhite.0f65610e379692ec85358ef864fadcad.svg",
     "static/media/interIcon.svg": "/stavmatic/static/media/interIcon.d1d852cfa71dc1f074ed3d955922db71.svg",
     "static/media/tennis.svg": "/stavmatic/static/media/tennis.d9cb4b2816d55f68d93dc89977c71e01.svg",
@@ -27,11 +28,11 @@
     "static/media/LaLiga.svg": "/stavmatic/static/media/LaLiga.c03f85038d1944dfe363e613ea88a074.svg",
     "static/media/coefUp.svg": "/stavmatic/static/media/coefUp.0a38e10b60694e48f4e5bc074e130653.svg",
     "static/media/coefTop.svg": "/stavmatic/static/media/coefTop.b4bf373228de26fcaf60cb8f16735537.svg",
-    "main.29185eeb.css.map": "/stavmatic/static/css/main.29185eeb.css.map",
-    "main.bd0c8215.js.map": "/stavmatic/static/js/main.bd0c8215.js.map"
+    "main.1e034bf6.css.map": "/stavmatic/static/css/main.1e034bf6.css.map",
+    "main.447457ce.js.map": "/stavmatic/static/js/main.447457ce.js.map"
   },
   "entrypoints": [
-    "static/css/main.29185eeb.css",
-    "static/js/main.bd0c8215.js"
+    "static/css/main.1e034bf6.css",
+    "static/js/main.447457ce.js"
   ]
 }
